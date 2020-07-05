@@ -5,10 +5,12 @@
   "scripts": {
     "fake_script": "echo Don't run the fake_script!!",
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel opensrc",
-    "share": "npm-run-all --parallel opensrc localtunnel",
-    "opensrc": "babel-node buildScripts/srcServer.js",
-    "localtunnel": "lt --port 3000 -h https://serverless.social"
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "share": "npm-run-all --parallel open:src localtunnel",
+    "open:src": "babel-node buildScripts/srcServer.js",
+    "localtunnel": "lt --port 3000 -h https://serverless.social",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "author": "Mike Leiter",
   "license": "MIT",
