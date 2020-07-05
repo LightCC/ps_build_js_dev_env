@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
-    "fake_script": "echo Don't run the fake_script!!"
-    , "prestart": "node buildScripts/startMessage.js"
-    , "start": "npm-run-all --parallel opensrc"
-    , "share": "npm-run-all --parallel opensrc localtunnel"
-    , "opensrc": "node buildScripts/srcServer.js"
-    , "localtunnel": "lt --port 3000 -h https://serverless.social"
+    "fake_script": "echo Don't run the fake_script!!",
+    "prestart": "babel-node buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel opensrc",
+    "share": "npm-run-all --parallel opensrc localtunnel",
+    "opensrc": "babel-node buildScripts/srcServer.js",
+    "localtunnel": "lt --port 3000 -h https://serverless.social"
   },
   "author": "Mike Leiter",
   "license": "MIT",
@@ -19,6 +19,7 @@
     "babel-cli": "6.16.0",
     "babel-core": "6.17.0",
     "babel-loader": "6.2.5",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-preset-latest": "6.16.0",
     "babel-register": "6.16.3",
     "chai": "3.5.0",
