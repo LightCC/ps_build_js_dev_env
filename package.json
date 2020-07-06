@@ -5,18 +5,22 @@
   "scripts": {
     "fake_script": "echo Don't run the fake_script!!",
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "start": "npm-run-all --parallel open:src lint:watch test:watch start-mockapi",
     "share": "npm-run-all --parallel open:src localtunnel",
     "open:src": "babel-node buildScripts/srcServer.js",
     "localtunnel": "lt --port 3000 -h https://serverless.social",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node buildScripts/generateMockData",
+    "prestart-mockapi": "npm run generate-mock-data",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "Mike Leiter",
   "license": "MIT",
   "dependencies": {
+    "jsf": "0.0.6",
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
